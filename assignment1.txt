@@ -1,0 +1,2 @@
+This is the sample .txt file
+for git assignment -1.
