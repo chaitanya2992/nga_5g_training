@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login Page</title>
+
+<style>
+    body {
+        font-family: Arial;
+        background: #4facfe;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .box {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        width: 280px;
+        text-align: center;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background: blue;
+        color: white;
+        border: none;
+    }
+
+    .error {
+        color: red;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Login</h2>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <p id="message" class="error"></p>
+</div>
+
+<script>
+function login() {
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+    let msg = document.getElementById("message");
+
+    // simple validation
+    if(user === "" || pass === "") {
+        msg.innerText = "Please fill all fields!";
+        return;
+    }
+
+    // demo credentials
+    if(user === "admin" && pass === "1234") {
+        msg.style.color = "green";
+        msg.innerText = "Login successful!";
+    } else {
+        msg.style.color = "red";
+        msg.innerText = "Invalid username or password!";
+    }
+}
+</script>
+
+</body>
+</html>
