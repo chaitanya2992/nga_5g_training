@@ -1,10 +1,9 @@
 #!/bin/bash
 
-read -p "Enter a number: " number
-
-while [ $number -le 5 ]; do
-	echo $((number*number))
+num=1
+while [ $num -le 5 ]; do
+	echo "Square of number $num is $((num*num))."
 	
-	number=$((number+1))
+	num=$((num+1))
 done
 exit 0
