@@ -1,0 +1,9 @@
+book_id,title,isbn,publisher,published_year,book_category_id,total_copies,available_copies
+101,Harry Potter and the Sorcerer's Stone,9.78044E+12,Bloomsbury,1997,2,10,7
+102,1984,9.78045E+12,Secker & Warburg,1949,4,8,5
+103,The Hobbit,9.78035E+12,George Allen & Unwin,1937,2,6,4
+104,Murder on the Orient Express,9.78006E+12,Collins Crime Club,1934,3,5,3
+105,The Da Vinci Code,9.78031E+12,Doubleday,2003,5,7,6
+106,Angels and Demons,9.78074E+12,Pocket Books,2000,5,6,5
+107,Animal Farm,9.78045E+12,Secker & Warburg,1945,1,9,6
+108,The Lord of the Rings,9.78062E+12,Houghton Mifflin,1954,2,12,8
