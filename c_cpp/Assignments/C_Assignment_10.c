@@ -18,6 +18,9 @@ if(asc >= 97 && asc <= 122){
   ans = toupper(x);
   printf("%c\n",ans);
 }
+else{
+  printf("Please enter valid ALPHABET!!\n");
+}
 
 return 0;
 }
