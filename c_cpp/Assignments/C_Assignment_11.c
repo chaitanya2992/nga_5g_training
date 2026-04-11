@@ -7,11 +7,12 @@ int num;
 
 printf("Enter Number: \n");
 scanf("%d", &num);
-int ans,temp;
-while(num>0){
+int ans;
+int temp=num;
+while(temp>0){
   
   ans+=
-  num/10;
+  temp/=10;
 }
 
 return 0;
