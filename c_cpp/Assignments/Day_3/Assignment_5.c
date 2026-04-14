@@ -38,6 +38,9 @@ int main(){
   swap(arr, n);
   output(arr, n);
 
+  free(arr);
+  arr=NULL;
+  
   return 0;
 
 }
