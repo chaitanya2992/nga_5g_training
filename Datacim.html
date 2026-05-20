@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>DataCom Masterclass: Network Fundamentals to Programmability</title>
+    <!-- Mermaid.js for Diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7fc;
+            color: #1a2b3e;
+            line-height: 1.5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            overflow: hidden;
+            padding: 2rem 2rem 2rem 2rem;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            background: linear-gradient(135deg, #0B3B5F, #1B7F8C);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-left: 6px solid #1B7F8C;
+            padding-left: 1rem;
+            margin: 1.5rem 0 1rem 0;
+            color: #0B3B5F;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: 1rem 0 0.5rem 0;
+            color: #1f5e6e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border: 1px solid #e2edf2;
+            transition: all 0.2s;
+        }
+
+        .scenario {
+            background: #eef5fa;
+            border-left: 8px solid #2c9ab3;
+            padding: 1rem;
+            border-radius: 18px;
+            margin: 1rem 0;
+            font-style: normal;
+        }
+
+        .diagram-container {
+            background: #fefefe;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .flex-twin {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .flex-item {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #d9eaf1;
+        }
+
+        .badge {
+            background: #0B3B5F;
+            color: white;
+            border-radius: 40px;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        .summary-one-liner {
+            background: #f0f9ff;
+            padding: 0.8rem;
+            border-radius: 16px;
+            margin: 0.5rem 0;
+            font-family: monospace;
+        }
+
+        .quiz-question {
+            background: #fff;
+            border: 1px solid #cde3ec;
+            border-radius: 20px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-question p {
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .quiz-options label {
+            display: block;
+            margin: 6px 0;
+            cursor: pointer;
+        }
+
+        button {
+            background: #1B7F8C;
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background: #0e5e68;
+            transform: translateY(-1px);
+        }
+
+        .score-area {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: #5f7f8c;
+            border-top: 1px solid #cbe0e8;
+            padding-top: 1.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 1rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1><i class="fas fa-network-wired"></i> DataCom Deep Dive</h1>
+    <p>Complete reference: OSI/TCP‑IP, TCP/UDP, IPv4/IPv6, Routing, WAN, Services, Management, Programmability. Each concept includes real‑world scenarios, visual workflows, and hands‑on insights.</p>
+
+    <!-- ======================= SECTION 1: OSI & TCP/IP ======================= -->
+    <h2>📡 Models & Protocols: OSI & TCP/IP</h2>
+    <div class="diagram-container">
+        <pre class="mermaid">
+        flowchart TD
+            A[Application Layer] --> B[Presentation Layer]
+            B --> C[Session Layer]
+            C --> D[Transport Layer]
+            D --> E[Network Layer]
+            E --> F[Data Link Layer]
+            F --> G[Physical Layer]
+            style A fill:#a2d9ce,stroke:#0b3b5f
+            style G fill:#f9e79f
+        </pre>
+        <p><strong>OSI 7 Layers</strong> – from application data to electrical signals.</p>
+    </div>
+    <div class="scenario">
+        <i class="fas fa-globe"></i> <strong>Real-world:</strong> Browsing a website. Data flows from Browser (Application) → encrypted (Presentation) → session management (Session) → TCP segments (Transport) → IP packets (Network) → Ethernet frames (Data Link) → bits on fiber (Physical).
+    </div>
+    <div class="flex-twin">
+        <div class="flex-item">
+            <h3>📘 OSI Layers & Functions</h3>
+            <ul>
+                <li><strong>7-Application:</strong> User interfaces (HTTP, SMTP)</li>
+                <li><strong>6-Presentation:</strong> Encryption, compression (TLS)</li>
+                <li><strong>5-Session:</strong> Dialog control, API sockets</li>
+                <li><strong>4-Transport:</strong> TCP/UDP, segmentation</li>
+                <li><strong>3-Network:</strong> Routing, IP addressing</li>
+                <li><strong>2-Data Link:</strong> MAC, switching, frames</li>
+                <li><strong>1-Physical:</strong> Bits, voltages, cables</li>
+            </ul>
+        </div>
+        <div class="flex-item">
+            <h3>🌐 TCP/IP Model vs OSI</h3>
+            <p>TCP/IP has 4 layers: Application (top 3 OSI), Transport, Internet (Network), Network Access (DataLink+Physical). Modern internet uses TCP/IP. OSI is conceptual.</p>
+            <table>
+                <tr><th>OSI</th><th>TCP/IP</th><th>Functionality</th></tr>
+                <tr><td>App/Pres/Session</td><td>Application</td><td>HTTP, DNS, SSH</td></tr>
+                <tr><td>Transport</td><td>Transport</td><td>TCP/UDP</td></tr>
+                <tr><td>Network</td><td>Internet</td><td>IPv4/IPv6, Routing</td></tr>
+                <tr><td>DataLink/Phys</td><td>Network Access</td><td>Ethernet, Wi-Fi</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- ======================= SECTION 2: TCP vs UDP ======================= -->
+    <h2>📦 TCP vs UDP Protocols</h2>
+    <div class="card">
+        <div class="flex-twin">
+            <div><i class="fas fa-handshake"></i> <strong>TCP (Transmission Control)</strong><br>Connection-oriented, reliable, sequenced, flow control, 3-way handshake. Use: Web, Email, File transfer.</div>
+            <div><i class="fas fa-bolt"></i> <strong>UDP (User Datagram Protocol)</strong><br>Connectionless, no reliability, low overhead, fast. Use: VoIP, streaming, DNS queries.</div>
+        </div>
+        <div class="scenario">
+            <i class="fas fa-video"></i> <strong>Real-world:</strong> Live video conference (UDP) – occasional packet loss is acceptable for real-time. Downloading a system update (TCP) – every byte must arrive intact.
+        </div>
+        <div class="diagram-container">
+            <pre class="mermaid">
+            sequenceDiagram
+                participant Client
+                participant Server
+                Note over Client,Server: TCP 3-Way Handshake
+                Client->>Server: SYN
+                Server-->>Client: SYN-ACK
+                Client->>Server: ACK
+                Note over Client,Server: UDP: no handshake, just datagrams
+            </pre>
+        </div>
+        <p><strong>Hands‑on:</strong> Use Wireshark to capture TCP file transfer (observe SYN, ACK, windowing) vs UDP streaming (no acknowledgements).</p>
+    </div>
+
+    <!-- ======================= SECTION 3: IPv4/IPv6 & Subnetting ======================= -->
+    <h2>🏷️ IPv4 / IPv6 Addressing & Subnetting</h2>
+    <div class="flex-twin">
+        <div class="flex-item">
+            <h3>IPv4 Details</h3>
+            <ul><li>32-bit dotted decimal</li><li>Classes A,B,C; Private ranges (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16)</li><li>Unicast, Broadcast (255.255.255.255), Multicast (224.0.0.0/4)</li></ul>
+        </div>
+        <div class="flex-item">
+            <h3>IPv6 Features</h3>
+            <ul><li>128-bit, hexadecimal</li><li>No broadcast, uses multicast & anycast</li><li>Link-local (FE80::/10), Unique Local (FD00::/8), Global Unicast</li></ul>
+        </div>
+    </div>
+    <div class="scenario">
+        <i class="fas fa-building"></i> <strong>Real-world:</strong> Enterprise using private IPv4 addressing (NAT to internet) plus dual-stack IPv6 for future readiness. Subnetting: /24 subnet for each department (Marketing 192.168.10.0/24, Sales 192.168.20.0/24).
+    </div>
+    <div class="diagram-container">
+        <pre class="mermaid">
+        graph LR
+            A[192.168.1.0/24] --> B[Subnet 1: 192.168.1.0/26]
+            A --> C[Subnet 2: 192.168.1.64/26]
+            style A fill:#cfe7f5
+        </pre>
+        <p>Subnetting splits a network into smaller broadcast domains.</p>
+    </div>
+    <p><strong>Hands‑on:</strong> In Packet Tracer, assign static IPv4 addresses to PCs within same subnet and test <code>ping</code>. Calculate subnets: given 192.168.1.0/24 need 4 subnets → mask /26.</p>
+    
+    <!-- ======================= SECTION 4: Routing Technologies ======================= -->
+    <h2>🚦 Routing Technologies: Tables, Protocols, Forwarding</h2>
+    <div class="card">
+        <h3>Routing Table Components</h3>
+        <p>Prefix, Next-hop, Metric, Administrative Distance (AD). Lower AD preferred: Direct(0), Static(1), EIGRP(90), OSPF(110), RIP(120).</p>
+        <div class="scenario">
+            <i class="fas fa-truck"></i> <strong>Real-world:</strong> Router at HQ: default route 0.0.0.0/0 via ISP gateway. OSPF internal routes with cost based on bandwidth. Gateway of last resort handles all unmatched traffic.
+        </div>
+        <h3>Dynamic Routing protocols</h3>
+        <ul><li><strong>OSPF:</strong> Link-state, fast convergence, areas.</li><li><strong>EIGRP:</strong> Cisco proprietary, hybrid, DUAL algorithm.</li><li><strong>RIPv2:</strong> Distance-vector, hop count limit 15.</li></ul>
+        <div class="diagram-container">
+            <pre class="mermaid">
+            flowchart LR
+                R1--"OSPF cost 10"-->R2
+                R2--"OSPF cost 5"-->R3
+                R1--"static backup"-->R3
+            </pre>
+        </div>
+        <p><strong>Hands‑on traceroute:</strong> Run <code>traceroute 8.8.8.8</code> and see each router hop. Use <code>show ip route</code> to examine entries.</p>
+    </div>
+
+    <!-- ======================= SECTION 5: WAN Technologies ======================= -->
+    <h2>🌍 WAN Technologies: PPP, GRE, eBGP, MPLS</h2>
+    <div class="flex-twin">
+        <div><i class="fas fa-tty"></i> <strong>PPP & MLPPP:</strong> Serial link authentication (PAP/CHAP), Multilink aggregates bandwidth.<br>
+        <strong>PPPoE:</strong> Common for DSL, client authentication.</div>
+        <div><i class="fas fa-tunnel"></i> <strong>GRE Tunnel:</strong> Encapsulates arbitrary packets to connect remote subnets.<br>
+        <strong>eBGP:</strong> Exchange routes between AS (branch to ISP).</div>
+    </div>
+    <div class="scenario">
+        <i class="fas fa-branch"></i> <strong>Real-world:</strong> Bank branch connects to HQ via GRE over internet; eBGP with ISP for default route; backup dual-homed WAN for redundancy.
+    </div>
+    <div class="diagram-container">
+        <pre class="mermaid">
+        graph TD
+            BR[Branch Router] -- eBGP --> ISP[Provider Edge]
+            BR -- GRE Tunnel --> HQ[Headquarters Router]
+        </pre>
+    </div>
+    <p><strong>Hands‑on:</strong> Configure PPP with CHAP on serial interfaces, then setup GRE tunnel between two routers not directly connected and verify tunnel interface status.</p>
+
+    <!-- ======================= SECTION 6: Infrastructure Services (DNS, DHCP, HSRP, NAT) ======================= -->
+    <h2>⚙️ Infrastructure Services: DNS, DHCP, HSRP, NAT</h2>
+    <div class="card">
+        <h3>DNS & DHCP</h3>
+        <p>DNS resolves names to IPs. DHCP automates IP assignment (pools, lease, relay). TFTP used for device backups/firmware.</p>
+        <div class="scenario">🏢 <strong>Enterprise:</strong> DHCP server provides IP and DNS server address to clients. HSRP between two routers gives resilient default gateway (virtual IP 192.168.1.1).</div>
+        <h3>HSRP (Hot Standby Router Protocol)</h3>
+        <p>Active/Standby redundancy: preemption, priority election.</p>
+        <h3>NAT (Network Address Translation)</h3>
+        <ul><li><strong>Static NAT:</strong> one-to-one mapping</li><li><strong>Dynamic NAT:</strong> pool of public IPs</li><li><strong>PAT (Overload):</strong> multiple private IPs share one public IP via port numbers</li></ul>
+        <div class="scenario"><i class="fas fa-home"></i> Home router uses PAT (overload) to let all devices share single ISP IP.</div>
+    </div>
+
+    <!-- ======================= SECTION 7: Network Infrastructure Management ======================= -->
+    <h2>📊 Network Management: SNMP, Syslog, IP SLA, CDP/LLDP</h2>
+    <div class="flex-twin">
+        <div><i class="fas fa-chart-line"></i> <strong>SNMPv2c/v3:</strong> Monitor performance, traps. v3 adds auth/privacy.<br>
+        <strong>Syslog:</strong> Centralized logging, severity levels.<br>
+        <strong>IP SLA:</strong> ICMP echo probes to measure latency/loss.
+        </div>
+        <div><i class="fas fa-save"></i> <strong>Config Backup:</strong> SCP/FTP/TFTP save configs.<br>
+        <strong>CDP/LLDP:</strong> neighbor discovery, topology mapping.</div>
+    </div>
+    <div class="scenario">⚠️ <strong>NOC scenario:</strong> Syslog server collects critical errors; SNMPv3 polls CPU usage; IP SLA monitors internet link jitter – alert on threshold.</div>
+
+    <!-- ======================= SECTION 8: Programmability & Automation ======================= -->
+    <h2>🤖 Network Programmability (SDN, Ansible, IaC)</h2>
+    <div class="card">
+        <p>Centralized SDN controllers (OpenDaylight, Cisco DNA Center) decouple control plane. Automation tools (Ansible, Puppet) push config changes consistently. Infrastructure as Code (IaC) manages network devices via YAML/JSON.</p>
+        <div class="scenario"><i class="fas fa-code-branch"></i> DevOps team uses Ansible playbook to deploy VLANs on 100 switches within minutes instead of manual CLI.</div>
+        <div class="diagram-container">
+            <pre class="mermaid">
+            graph LR
+                A[Ansible Controller] -->|REST API| B[SDN Controller]
+                B --> C[Switches]
+                B --> D[Routers]
+            </pre>
+        </div>
+    </div>
+
+    <!-- ======================= SUMMARY ONE-LINERS ======================= -->
+    <h2>📌 Summary: One-Liner for Each Major Topic</h2>
+    <div class="summary-one-liner">🔹 OSI 7 layers: standardized troubleshooting model (All People Seem To Need Data Processing).</div>
+    <div class="summary-one-liner">🔹 TCP/IP: practical internet stack with Application, Transport, Internet, Link layers.</div>
+    <div class="summary-one-liner">🔹 TCP: reliable, connection-oriented, 3-way handshake, sequence/ack.</div>
+    <div class="summary-one-liner">🔹 UDP: fast, no-retransmission, stateless (ideal for DNS & streaming).</div>
+    <div class="summary-one-liner">🔹 IPv4: 32-bit addresses, classful originally, subnetting divides networks.</div>
+    <div class="summary-one-liner">🔹 Private IPv4: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 – not routable on internet.</div>
+    <div class="summary-one-liner">🔹 IPv6: 128-bit, no broadcast, auto-config, huge address space.</div>
+    <div class="summary-one-liner">🔹 Routing Table: prefix, next-hop, metric, AD determine best path.</div>
+    <div class="summary-one-liner">🔹 Dynamic Routing (OSPF, EIGRP): adapts to topology changes automatically.</div>
+    <div class="summary-one-liner">🔹 Default route & Gateway of last resort: catch-all for unknown destinations.</div>
+    <div class="summary-one-liner">🔹 WAN: PPP (auth) / GRE tunnels / MPLS / eBGP for inter-AS routing.</div>
+    <div class="summary-one-liner">🔹 DNS: translates domain → IP; DHCP: dynamic IP assignment with lease.</div>
+    <div class="summary-one-liner">🔹 HSRP: first-hop redundancy with virtual IP and active/standby routers.</div>
+    <div class="summary-one-liner">🔹 NAT Overload (PAT): many private IPs to one public IP using ports.</div>
+    <div class="summary-one-liner">🔹 SNMP: monitor & manage devices (v3 secure). Syslog: centralized logs.</div>
+    <div class="summary-one-liner">🔹 IP SLA: proactive performance measurement (latency, jitter).</div>
+    <div class="summary-one-liner">🔹 CDP/LLDP: discover neighbors & network topology.</div>
+    <div class="summary-one-liner">🔹 SDN & Programmability: automate network via APIs and controllers (Ansible, IaC).</div>
+
+    <!-- ======================= 50 MCQs (Interactive) ======================= -->
+    <h2>📝 50 MCQs – Test Your Knowledge</h2>
+    <p>Select the best answer for each question. At the end, click "Submit Answers" to see your score.</p>
+    <div id="quiz-container"></div>
+    <button id="submitQuiz">✅ Submit Answers</button>
+    <div id="scoreDisplay" class="score-area"></div>
+    <footer>DataCom Mastery: Real scenarios, visuals & interactive assessment.</footer>
+</div>
+
+<script>
+    // 50 Multiple Choice Questions (covering all topics)
+    const questions = [
+        { text: "Which OSI layer is responsible for routing and IP addressing?", options: ["Transport", "Network", "Data Link", "Session"], correct: 1 },
+        { text: "Which protocol is connection‑oriented and guarantees delivery?", options: ["UDP", "IP", "TCP", "Ethernet"], correct: 2 },
+        { text: "Which command is used to trace the path packets take to a destination?", options: ["ping", "traceroute", "ipconfig", "show route"], correct: 1 },
+        { text: "What is the administrative distance of a static route?", options: ["0", "1", "90", "110"], correct: 1 },
+        { text: "Which dynamic routing protocol uses hop count as metric (max 15)?", options: ["OSPF", "EIGRP", "RIP", "BGP"], correct: 2 },
+        { text: "What does NAT overload (PAT) use to diff
